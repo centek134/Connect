@@ -1,8 +1,35 @@
 @import "../Global/Global.scss";
-
 .nav{
-    background-color: $sidebar_bg;
-    width: 250px;
-    padding: 10px;
+    grid-area: sidebar;
     color: $sidebar_font_color;
+    background-color: $sidebar_bg;
+    .nav_list, .nav_chat_list{
+        width: 100%;
+        padding: 5px 0;
+        .list_item{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 5px 0 5px 15px;
+            cursor: pointer;
+            &:hover{
+                background-color:$nav_item_bg_hover ;
+            }
+            .item_text{
+                padding: 0 0 0 10px;
+                font-size: 14px;
+                font-weight: 600;
+                
+            }
+        }
+    }
+    .nav_list{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.527);
+        border-top: 1px solid rgba(255, 255, 255, 0.527);;
+        .item_logo{
+            width: 20px;
+            height: 20px;
+        }
+    }
+
 }

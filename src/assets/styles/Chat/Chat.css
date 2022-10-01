@@ -1,4 +1,24 @@
-.chat_body {
-  width: 100%;
-  height: 100%;
+.chat_container {
+  grid-area: chat_container;
+  display: grid;
+  grid-template-rows: 60px 1fr 100px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "chatHeader" "chatBody" "chatPanel";
+}
+.chat_container .chat_body {
+  grid-area: chatBody;
+  background-color: rgba(0, 255, 255, 0.13);
+}
+.chat_container .chat_panel {
+  grid-area: chatPanel;
+  background-color: rgba(223, 68, 68, 0.267);
+}
+.chat_container .chat_header {
+  grid-area: chatHeader;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(161, 161, 161);
+}
+.chat_container .chat_header .chat_header_name {
+  padding: 0 0 0 20px;
 }/*# sourceMappingURL=Chat.css.map */

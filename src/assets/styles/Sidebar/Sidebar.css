@@ -1,6 +1,32 @@
 .nav {
+  grid-area: sidebar;
+  color: rgba(255, 255, 255, 0.8);
   background-color: #4c114d;
-  width: 250px;
-  padding: 10px;
-  color: #fff;
+}
+.nav .nav_list, .nav .nav_chat_list {
+  width: 100%;
+  padding: 5px 0;
+}
+.nav .nav_list .list_item, .nav .nav_chat_list .list_item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 0 5px 15px;
+  cursor: pointer;
+}
+.nav .nav_list .list_item:hover, .nav .nav_chat_list .list_item:hover {
+  background-color: #390d3a;
+}
+.nav .nav_list .list_item .item_text, .nav .nav_chat_list .list_item .item_text {
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.nav .nav_list {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.527);
+  border-top: 1px solid rgba(255, 255, 255, 0.527);
+}
+.nav .nav_list .item_logo {
+  width: 20px;
+  height: 20px;
 }/*# sourceMappingURL=Sidebar.css.map */

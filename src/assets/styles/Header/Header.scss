@@ -1,5 +1,6 @@
 @import "../Global/Global.scss";
 .header{
+    grid-area: header;
     display: flex;
     justify-content: space-between;
     width: 100%;
