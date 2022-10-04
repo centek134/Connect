@@ -3,9 +3,11 @@
     grid-area: sidebar;
     color: $sidebar_font_color;
     background-color: $sidebar_bg;
-    .nav_list, .nav_chat_list{
+    .nav_list{
         width: 100%;
         padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.527);
+        border-top: 1px solid rgba(255, 255, 255, 0.527);;
         .list_item{
             display: flex;
             align-items: center;
@@ -21,15 +23,17 @@
                 font-weight: 600;
                 
             }
+            .item_logo{
+                width: 20px;
+                height: 20px;
+            }
         }
     }
-    .nav_list{
-        border-bottom: 1px solid rgba(255, 255, 255, 0.527);
-        border-top: 1px solid rgba(255, 255, 255, 0.527);;
-        .item_logo{
-            width: 20px;
-            height: 20px;
+    .nav_chat_list{
+        width: 100%;
+        padding: 5px 0;
+        .chat_list_heading{
+            padding: 5px 0 5px 15px;
         }
     }
-
 }

@@ -1,0 +1,19 @@
+.room_link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+.room_link .room_item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 0 5px 15px;
+  cursor: pointer;
+}
+.room_link .room_item:hover {
+  background-color: #390d3a;
+}
+.room_link .room_item .room_text {
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}/*# sourceMappingURL=RoomItem.css.map */
