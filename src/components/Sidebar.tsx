@@ -37,6 +37,7 @@ export const Sidebar = () => {
           <li className="list_item"><AppsSVG className="item_logo"/><p className="item_text">Apps</p></li>
         </ul>
         <ul className="nav_chat_list">
+          <h3 className="chat_list_heading">Channels</h3>
           {rooms.map((item,i) => {
             return(<RoomItem key={i} roomId={item.roomId} roomName={item.roomName} />)
           })}
