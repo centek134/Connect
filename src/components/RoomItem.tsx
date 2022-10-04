@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/styles/RoomItem/RoomItem.css";
 import { Link } from "react-router-dom"
 
 type Props = {
@@ -8,6 +9,6 @@ type Props = {
 
 export const RoomItem = ({ roomName, roomId}:Props) => {
   return (
-    <Link to={`/room/${roomId}`}><li className="list_item"><p className="item_text">{roomName}</p></li></Link>
+    <Link className="room_link" to={`/room/${roomId}`}><li className="room_item"><p className="room_text">{roomName}</p></li></Link>
   )
 }
