@@ -7,7 +7,7 @@ import {ReactComponent as DraftsSVG} from "../assets/icons/Drafts.svg";
 import {ReactComponent as MentionsSVG} from "../assets/icons/Mentions.svg";
 import {ReactComponent as SavedItemsSVG} from "../assets/icons/SavedItems.svg";
 import {ReactComponent as AppsSVG} from "../assets/icons/Apps.svg";
-import { RoomItem } from "./RoomItem";
+import { RoomItem } from "./index";
 
 export const Sidebar = () => {
   const [rooms, setRooms] = useState<{roomId:string, roomName:string}[]>([]);
