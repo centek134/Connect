@@ -8,7 +8,8 @@
 .chat_container .chat_body {
   grid-area: chatBody;
   padding: 20px;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .chat_container .chat_panel {
   grid-area: chatPanel;
