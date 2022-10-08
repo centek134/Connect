@@ -1,0 +1,21 @@
+@import "../Global/Global.scss";
+.room_link{
+    text-decoration: none;
+    color: $sidebar_font_color;
+        .room_item{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 5px 0 5px 15px;
+            cursor: pointer;
+        &:hover{
+            background-color:$nav_item_bg_hover ;
+        }
+        .room_text{
+            padding: 0 0 0 10px;
+            font-size: 14px;
+            font-weight: 600;
+            
+        }
+    }
+}

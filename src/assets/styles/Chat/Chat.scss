@@ -1,4 +1,76 @@
-.chat_body{
-    width: 100%;
-    height: 100%;
+.chat_container{
+    grid-area: chat_container;
+    display: grid;
+    grid-template-rows: 60px 1fr 120px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "chatHeader"
+    "chatBody"
+    "chatPanel"
+    ;
+    .chat_body{
+        grid-area: chatBody;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto ;
+    }
+    .chat_panel{
+        grid-area: chatPanel;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        .chat_container{
+            width: 95%;
+            height: 80%;
+            border: 1px solid rgb(161, 161, 161);
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            .chat_textarea{
+                resize: none;
+                width: 100%;
+                height: 60%;
+                font-size: 16px;
+                padding: 5px 0 0 15px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                outline: none;
+            }
+            .control_panel{
+                width: 100%;
+                height: 40%;
+                padding: 0 5px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .add_file_btn{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+                .send_btn{
+                    width: 30px;
+                    height: 30px;
+                    height: 100%;
+                    cursor: pointer;
+                    background-color: transparent;
+                }
+
+            }
+        }
+    }
+    .chat_header{
+        grid-area: chatHeader;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgb(161, 161, 161);
+        .chat_header_name{
+            padding: 0 0 0 20px;
+        }
+
+    }
+
 }
