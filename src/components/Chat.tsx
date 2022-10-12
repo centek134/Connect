@@ -11,7 +11,7 @@ export const Chat = () => {
   let roomId = window.location.pathname.slice(6);
   const [messages, setMessages] = useState<{message:string, userName:string, userImage:string, timeStamp:string}[]>([]);
   const [messageInput, setMessageInput] = useState<string> ("");
-  const [roomName, setRoomName] = useState<string>("")
+  const [roomName, setRoomName] = useState<string>("");
   
   useEffect(() => {
     fetchServerData();

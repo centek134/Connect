@@ -1,15 +1,24 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import "../assets/styles/Login/Login.css";
-import { getAuth, signInWithPopup, OAuthProvider } from "firebase/auth"
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import {  } from "firebase/app"
-import { db } from "../firebase";
 import  "firebase/compat/app";
-export const Login = () => {
+
+interface Props{
+    setUser: Dispatch<SetStateAction<{}>>;
+}
+
+export const Login = ({setUser}:Props) => {
+    
 
     const signIn = () => {
-        let provider = new OAuthProvider("google.com");
         const auth = getAuth();
+        const provider = new GoogleAuthProvider();
         signInWithPopup(auth,provider).then(result => {
+            setUser({
+                name:result.user.displayName,
+                userImg:result.user.photoURL
+                })
             console.log(result);
         }).catch((err) => console.log(err))
     
