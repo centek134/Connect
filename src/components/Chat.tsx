@@ -5,8 +5,11 @@ import {ReactComponent as AddFileIcon } from "../assets/icons/AddFileIcon.svg";
 import { Message } from "./index";
 import { db, collection ,getDocs, doc, addDoc, getDoc, serverTimestamp} from "../firebase";
 import {useParams} from "react-router-dom";
+interface Props{
+  user: null | {name:string,userImg:string}
+};
 
-export const Chat = () => {
+export const Chat = ({user}:Props) => {
   useParams();
   let roomId = window.location.pathname.slice(6);
   const [messages, setMessages] = useState<{message:string, userName:string, userImage:string, timeStamp:string}[]>([]);
@@ -25,14 +28,13 @@ export const Chat = () => {
       userImage:doc.data().userImage,
       timeStamp:doc.data().timeStamp,
     })));
-    console.log(messages);
     const roomRef = doc(db, `rooms/${roomId}`);
     const roomSnap = await getDoc(roomRef);
     setRoomName(roomSnap.data()!.name)
-  }
+  };
   const writeMessage = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessageInput(e.target.value);
-  }
+  };
 
   const checkKeyCode = (e:React.KeyboardEvent<HTMLTextAreaElement>) => {
     if(e.key === "Enter"){
@@ -41,23 +43,21 @@ export const Chat = () => {
     }
     else{
       return false;
-    }
+    };
   }
-
+  
   async function sendMessage(){
     const docRef = await addDoc(collection(db,`rooms/${roomId}/messages`),{
       message:messageInput,
       timeStamp:serverTimestamp(),
-      userImage:"",
-      userName:""
-    })
-    console.log(docRef)
-    console.log("new document written with id =>>",docRef.id)
+      userImage:user!.userImg,
+      userName:user!.name
+    });
+    console.log(docRef);
+    console.log("new document written with id =>>",docRef.id);
     fetchServerData();
-  }
+  };
 
-
-//https://firebase.google.com/docs/firestore/data-model#web-version-9_1
   return (
     <main className="chat_container">
       <header className="chat_header">
