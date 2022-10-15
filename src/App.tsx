@@ -3,7 +3,7 @@ import "./assets/styles/App/App.css";
 import {Chat, Sidebar, Header, WelcomePage, Login} from "./components/index";
 import {Routes, Route } from "react-router-dom";
 const App = () => {
-  const [user, setUser] = useState<{}>();
+  const [user, setUser] = useState<null | {name:string,userImg:string}>(null);
   return (
     <div className="app">
         {user ? (
@@ -12,7 +12,7 @@ const App = () => {
         <Sidebar/>
         <Routes>
           <Route path="/" element={<WelcomePage/>}/>
-          <Route path="/room/:roomid" element={<Chat/>}/>
+          <Route path="/room/:roomid" element={<Chat user = {user}/>}/>
         </Routes>
       </section>
         ):(
