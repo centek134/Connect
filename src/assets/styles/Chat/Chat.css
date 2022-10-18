@@ -1,23 +1,24 @@
 .chat_container {
   grid-area: chat_container;
-  display: grid;
-  grid-template-rows: 60px 1fr 120px;
-  grid-template-columns: 1fr;
-  grid-template-areas: "chatHeader" "chatBody" "chatPanel";
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .chat_container .chat_body {
-  grid-area: chatBody;
+  min-height: calc(100% - 180px);
   padding: 20px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
+  word-break: break-all;
 }
 .chat_container .chat_panel {
-  grid-area: chatPanel;
+  width: 100%;
+  min-height: 120px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
 }
-.chat_container .chat_panel .chat_container {
+.chat_container .chat_panel .panel_container {
   width: 95%;
   height: 80%;
   border: 1px solid rgb(161, 161, 161);
@@ -25,7 +26,7 @@
   flex-direction: column;
   border-radius: 10px;
 }
-.chat_container .chat_panel .chat_container .chat_textarea {
+.chat_container .chat_panel .panel_container .chat_textarea {
   resize: none;
   width: 100%;
   height: 60%;
@@ -35,7 +36,7 @@
   border-top-right-radius: 10px;
   outline: none;
 }
-.chat_container .chat_panel .chat_container .control_panel {
+.chat_container .chat_panel .panel_container .control_panel {
   width: 100%;
   height: 40%;
   padding: 0 5px;
@@ -45,13 +46,13 @@
   align-items: center;
   justify-content: space-between;
 }
-.chat_container .chat_panel .chat_container .control_panel .add_file_btn {
+.chat_container .chat_panel .panel_container .control_panel .add_file_btn {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
-.chat_container .chat_panel .chat_container .control_panel .send_btn {
+.chat_container .chat_panel .panel_container .control_panel .send_btn {
   width: 30px;
   height: 30px;
   height: 100%;
@@ -59,7 +60,8 @@
   background-color: transparent;
 }
 .chat_container .chat_header {
-  grid-area: chatHeader;
+  width: 100%;
+  min-height: 60px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(161, 161, 161);
