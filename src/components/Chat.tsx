@@ -3,8 +3,9 @@ import "../assets/styles/Chat/Chat.css";
 import {ReactComponent as Arrow } from "../assets/icons/Arrow.svg";
 import {ReactComponent as AddFileIcon } from "../assets/icons/AddFileIcon.svg";
 import { Message } from "./index";
-import { db, collection ,getDocs, doc, addDoc, getDoc, serverTimestamp} from "../firebase";
+import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query } from "../firebase";
 import {useParams} from "react-router-dom";
+import { orderBy } from "firebase/firestore";
 interface Props{
   user: null | {name:string,userImg:string}
 };
@@ -20,14 +21,18 @@ export const Chat = ({user}:Props) => {
     fetchServerData();
   },[roomId]);
   
+  
   async function fetchServerData(){
-    const querySnapshotMessages = await getDocs(collection(db,`rooms/${roomId}/messages`));
-    setMessages(querySnapshotMessages.docs.map((doc) => ({
-      message:doc.data().message,
-      userName:doc.data().userName,
-      userImage:doc.data().userImage,
-      timeStamp:doc.data().timeStamp,
-    })));
+    const q = await query(collection(db,`rooms/${roomId}/messages`),orderBy("timeStamp", "asc"));
+    onSnapshot(q, (querySnapShot) => {
+      setMessages(querySnapShot.docs.map((doc) => ({
+        message:doc.data().message,
+        userName:doc.data().userName,
+        userImage:doc.data().userImage,
+        timeStamp:doc.data().timeStamp,
+      })));
+    });
+
     const roomRef = doc(db, `rooms/${roomId}`);
     const roomSnap = await getDoc(roomRef);
     setRoomName(roomSnap.data()!.name)
@@ -37,9 +42,13 @@ export const Chat = ({user}:Props) => {
   };
 
   const checkKeyCode = (e:React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if(e.key === "Enter"){
+    
+    if((e.key === "Enter" && Boolean(messageInput) === false) || (e.key === "Enter" && e.shiftKey)){
+      return;
+    }
+    else if(e.key === "Enter"){
       sendMessage();
-      setMessageInput("");
+      setMessageInput("".trim());
     }
     else{
       return false;
@@ -56,6 +65,7 @@ export const Chat = ({user}:Props) => {
     console.log(docRef);
     console.log("new document written with id =>>",docRef.id);
     fetchServerData();
+    setMessageInput("".trim());
   };
 
   return (
@@ -69,9 +79,8 @@ export const Chat = ({user}:Props) => {
         })}
       </section>
       <section className="chat_panel">
-        <div className="chat_container">
-          <textarea onKeyDown={(e) => checkKeyCode(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea">
-          </textarea>
+        <div className="panel_container">
+          <textarea onKeyDown={(e) => checkKeyCode(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea"></textarea>
           <div className="control_panel">
             <button className="add_file_btn"><AddFileIcon/></button>
             <button onClick={sendMessage} className="send_btn"><Arrow/></button>
