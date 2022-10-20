@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs, addDoc, getDoc, serverTimestamp, doc, onSnapshot, query} from "firebase/firestore"
+import {getFirestore, collection, getDocs, addDoc, getDoc, serverTimestamp, doc, onSnapshot, query, orderBy} from "firebase/firestore"
+import {getStorage, ref, uploadBytes, list} from "firebase/storage"
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAZNYL0Bgr9Yali5XVP1ZbdzSo99dHB8_U",
@@ -12,5 +14,6 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
-export { db, app, collection, getDocs, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query};
+export { db, app, collection, getDocs, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes};
