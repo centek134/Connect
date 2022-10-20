@@ -8,7 +8,7 @@ const App = () => {
     <div className="app">
         {user ? (
         <section className="app_body">
-        <Header/>
+        <Header userImg = {user.userImg}/>
         <Sidebar/>
         <Routes>
           <Route path="/" element={<WelcomePage/>}/>
