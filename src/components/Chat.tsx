@@ -3,9 +3,8 @@ import "../assets/styles/Chat/Chat.css";
 import {ReactComponent as Arrow } from "../assets/icons/Arrow.svg";
 import {ReactComponent as AddFileIcon } from "../assets/icons/AddFileIcon.svg";
 import { Message } from "./index";
-import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query } from "../firebase";
+import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes } from "../firebase";
 import {useParams} from "react-router-dom";
-import { orderBy } from "firebase/firestore";
 interface Props{
   user: null | {name:string,userImg:string}
 };
@@ -13,18 +12,28 @@ interface Props{
 export const Chat = ({user}:Props) => {
   useParams();
   let roomId = window.location.pathname.slice(6);
-  const [messages, setMessages] = useState<{message:string, userName:string, userImage:string, timeStamp:string}[]>([]);
+  const [messages, setMessages] = useState<{ message:string, userName:string, userImage:string, timeStamp:string}[]>([]);
   const [messageInput, setMessageInput] = useState<string> ("");
   const [roomName, setRoomName] = useState<string>("");
+  const [uploadFile, setUploadFile] = useState<any>();
   
   useEffect(() => {
     fetchServerData();
   },[roomId]);
   
   
+  const fileUpload = () => {
+    if(uploadFile === null) return;
+    const uploadRef = ref(storage,`files/${uploadFile.name}`);
+    uploadBytes(uploadRef,uploadFile).then(() => {
+      alert("file_uploaded");
+    });
+  };
+  
   async function fetchServerData(){
     const q = await query(collection(db,`rooms/${roomId}/messages`),orderBy("timeStamp", "asc"));
     onSnapshot(q, (querySnapShot) => {
+      console.log(querySnapShot.docs.map(doc => doc.id))
       setMessages(querySnapShot.docs.map((doc) => ({
         message:doc.data().message,
         userName:doc.data().userName,
@@ -41,29 +50,35 @@ export const Chat = ({user}:Props) => {
     setMessageInput(e.target.value);
   };
 
-  const checkKeyCode = (e:React.KeyboardEvent<HTMLTextAreaElement>) => {
-    
+  const checkInput = (e:React.KeyboardEvent<HTMLTextAreaElement>) => {
     if((e.key === "Enter" && Boolean(messageInput) === false) || (e.key === "Enter" && e.shiftKey)){
       return;
     }
-    else if(e.key === "Enter"){
+    else if( messageInput === "\n" && e.key === "Enter"){
+      setMessageInput("".trim());
+      return;
+    }
+    else if(messageInput.trim() === "" && e.key === "Enter"){
+      setMessageInput("".trim());
+      return;
+    }
+    else if(e.key === "Enter" && messageInput !== ""){
       sendMessage();
       setMessageInput("".trim());
     }
     else{
       return false;
     };
-  }
+  };
   
   async function sendMessage(){
-    const docRef = await addDoc(collection(db,`rooms/${roomId}/messages`),{
+    await addDoc(collection(db,`rooms/${roomId}/messages`),{
       message:messageInput,
       timeStamp:serverTimestamp(),
       userImage:user!.userImg,
-      userName:user!.name
+      userName:user!.name,
+      uploadedFile:uploadFile.name,
     });
-    console.log(docRef);
-    console.log("new document written with id =>>",docRef.id);
     fetchServerData();
     setMessageInput("".trim());
   };
@@ -80,10 +95,11 @@ export const Chat = ({user}:Props) => {
       </section>
       <section className="chat_panel">
         <div className="panel_container">
-          <textarea onKeyDown={(e) => checkKeyCode(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea"></textarea>
+          <textarea onKeyDown={(e) => checkInput(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea"></textarea>
           <div className="control_panel">
-            <button className="add_file_btn"><AddFileIcon/></button>
-            <button onClick={sendMessage} className="send_btn"><Arrow/></button>
+            <input onChange={(event) => setUploadFile(event.target.files![0])} type="file" />
+            {/* <button className="add_file_btn"><AddFileIcon/></button> */}
+            <button onClick={() => {sendMessage(); fileUpload();}} className="send_btn"><Arrow/></button>
           </div>
         </div>
       </section>
