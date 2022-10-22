@@ -4,9 +4,10 @@ interface Props {
     message: string,
     timeStamp: any,
     userImage: string,
-    userName:string
+    userName:string,
+    imgUrl?:string
 }
-export const Message = ({message, timeStamp, userImage, userName}:Props) => {
+export const Message = ({message, timeStamp, userImage, userName, imgUrl}:Props) => {
   return (
       
     <div className="message">
@@ -14,6 +15,7 @@ export const Message = ({message, timeStamp, userImage, userName}:Props) => {
         <div className="text_wrapp">
             <h4 className="message_username">{userName} <span className="message_timestamp">{new Date(timeStamp?.toDate()).toUTCString()}</span></h4>
             <p className="message_text">{message}</p>
+            {imgUrl? <img src={imgUrl} alt="img that was uploaded by user"/> : null}
         </div>
     </div>
   );
