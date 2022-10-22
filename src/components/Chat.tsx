@@ -3,7 +3,7 @@ import "../assets/styles/Chat/Chat.css";
 import {ReactComponent as Arrow } from "../assets/icons/Arrow.svg";
 import {ReactComponent as AddFileIcon } from "../assets/icons/AddFileIcon.svg";
 import { Message } from "./index";
-import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes } from "../firebase";
+import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes, getDownloadURL } from "../firebase";
 import {useParams} from "react-router-dom";
 interface Props{
   user: null | {name:string,userImg:string}
@@ -12,36 +12,39 @@ interface Props{
 export const Chat = ({user}:Props) => {
   useParams();
   let roomId = window.location.pathname.slice(6);
-  const [messages, setMessages] = useState<{ message:string, userName:string, userImage:string, timeStamp:string}[]>([]);
+  const [messages, setMessages] = useState<{ message:string, userName:string, userImage:string, timeStamp:string,imgUrl:string }[]>([]);
   const [messageInput, setMessageInput] = useState<string> ("");
   const [roomName, setRoomName] = useState<string>("");
-  const [uploadFile, setUploadFile] = useState<any>();
+  const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
   
   useEffect(() => {
     fetchServerData();
   },[roomId]);
   
   
-  const fileUpload = () => {
-    if(uploadFile === null) return;
-    const uploadRef = ref(storage,`files/${uploadFile.name}`);
-    uploadBytes(uploadRef,uploadFile).then(() => {
-      alert("file_uploaded");
-    });
+  async function imgUpload(img:any){
+    console.log(img);
+    if(img === null) return;
+    const uploadRef = ref(storage,`files/${img.name}`);
+    console.log( uploadRef,);
+    await uploadBytes(uploadRef,img);
+    await getDownloadURL(ref(storage,`files/${img.name}`)).then(res =>{ 
+      setUploadImgUrl(res);
+      console.log(res);
+    })
   };
   
   async function fetchServerData(){
     const q = await query(collection(db,`rooms/${roomId}/messages`),orderBy("timeStamp", "asc"));
     onSnapshot(q, (querySnapShot) => {
-      console.log(querySnapShot.docs.map(doc => doc.id))
       setMessages(querySnapShot.docs.map((doc) => ({
         message:doc.data().message,
         userName:doc.data().userName,
         userImage:doc.data().userImage,
         timeStamp:doc.data().timeStamp,
+        imgUrl:doc.data().imgUrl
       })));
     });
-
     const roomRef = doc(db, `rooms/${roomId}`);
     const roomSnap = await getDoc(roomRef);
     setRoomName(roomSnap.data()!.name)
@@ -51,20 +54,25 @@ export const Chat = ({user}:Props) => {
   };
 
   const checkInput = (e:React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if((e.key === "Enter" && Boolean(messageInput) === false) || (e.key === "Enter" && e.shiftKey)){
+    if(uploadImgUrl && e.key === "Enter"){
+      sendMessage();
+      return;
+    }
+    if((e.key === "Enter" && messageInput === "") || (e.key === "Enter" && e.shiftKey)){
       return;
     }
     else if( messageInput === "\n" && e.key === "Enter"){
-      setMessageInput("".trim());
+      setMessageInput("");
       return;
     }
     else if(messageInput.trim() === "" && e.key === "Enter"){
-      setMessageInput("".trim());
+      setMessageInput("");
       return;
     }
     else if(e.key === "Enter" && messageInput !== ""){
       sendMessage();
       setMessageInput("".trim());
+      return;
     }
     else{
       return false;
@@ -77,10 +85,29 @@ export const Chat = ({user}:Props) => {
       timeStamp:serverTimestamp(),
       userImage:user!.userImg,
       userName:user!.name,
-      uploadedFile:uploadFile.name,
+      imgUrl:uploadImgUrl
     });
-    fetchServerData();
     setMessageInput("".trim());
+    setUploadImgUrl("");
+    resetFileInput();
+    fetchServerData();
+  };
+
+  const resetFileInput = () => {
+    const inputId = document.getElementById("file_input") as HTMLInputElement;
+    inputId.type = "text";
+    inputId.type = "file";
+    return; 
+  };
+  async function fileExtensionValidation(event:React.ChangeEvent<HTMLInputElement>){
+    if((event.target.files![0].type === "image/png") || (event.target.files![0].type === "image/jpeg") || (event.target.files![0].type === "image/webp") || (event.target.files![0].type === "image/svg+xml") || (event.target.files![0].type === "image/jpg")){
+      await imgUpload(event.target.files![0]);
+    }
+    else{
+      console.log(event.target.files)
+      window.alert("Only images are allowed, please send file with one of the extensions: png, jpg, jpeg, webp, svg");
+      resetFileInput();
+    }
   };
 
   return (
@@ -90,16 +117,16 @@ export const Chat = ({user}:Props) => {
       </header>
       <section className="chat_body">
         {messages.map((item,i) => {
-          return <Message key={i} message={item.message} timeStamp={item.timeStamp} userImage={item.userImage} userName={item.userName}/>
+          return <Message key={i} imgUrl={item.imgUrl} message={item.message} timeStamp={item.timeStamp} userImage={item.userImage} userName={item.userName}/>
         })}
       </section>
       <section className="chat_panel">
         <div className="panel_container">
           <textarea onKeyDown={(e) => checkInput(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea"></textarea>
           <div className="control_panel">
-            <input onChange={(event) => setUploadFile(event.target.files![0])} type="file" />
+            <input id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
             {/* <button className="add_file_btn"><AddFileIcon/></button> */}
-            <button onClick={() => {sendMessage(); fileUpload();}} className="send_btn"><Arrow/></button>
+            <button onClick={() => { sendMessage();}} className="send_btn"><Arrow/></button>
           </div>
         </div>
       </section>
