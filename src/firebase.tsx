@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore, collection, getDocs, addDoc, getDoc, serverTimestamp, doc, onSnapshot, query, orderBy} from "firebase/firestore"
-import {getStorage, ref, uploadBytes, list} from "firebase/storage"
+import {getStorage, ref, uploadBytes, list, getDownloadURL} from "firebase/storage"
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -16,4 +16,4 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-export { db, app, collection, getDocs, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes};
+export { db, app, collection, getDocs, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes, list, getDownloadURL};
