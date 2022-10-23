@@ -21,17 +21,15 @@ export const Chat = ({user}:Props) => {
     fetchServerData();
   },[roomId]);
   
-  
-  async function imgUpload(img:any){
-    console.log(img);
+  async function imgUpload(img:File){
     if(img === null) return;
+    document.getElementById("file_name")!.innerHTML = `${img.name.slice(0,10)}...`;
     const uploadRef = ref(storage,`files/${img.name}`);
     console.log( uploadRef,);
     await uploadBytes(uploadRef,img);
     await getDownloadURL(ref(storage,`files/${img.name}`)).then(res =>{ 
       setUploadImgUrl(res);
-      console.log(res);
-    })
+    });
   };
   
   async function fetchServerData(){
@@ -97,6 +95,7 @@ export const Chat = ({user}:Props) => {
     const inputId = document.getElementById("file_input") as HTMLInputElement;
     inputId.type = "text";
     inputId.type = "file";
+    document.getElementById("file_name")!.innerHTML = "";
     return; 
   };
   async function fileExtensionValidation(event:React.ChangeEvent<HTMLInputElement>){
@@ -107,13 +106,13 @@ export const Chat = ({user}:Props) => {
       console.log(event.target.files)
       window.alert("Only images are allowed, please send file with one of the extensions: png, jpg, jpeg, webp, svg");
       resetFileInput();
-    }
+    };
   };
 
   return (
     <main className="chat_container">
       <header className="chat_header">
-        <h3 className="chat_header_name">{roomName}</h3>
+        <h3 className="chat_header_name"># {roomName}</h3>
       </header>
       <section className="chat_body">
         {messages.map((item,i) => {
@@ -124,12 +123,15 @@ export const Chat = ({user}:Props) => {
         <div className="panel_container">
           <textarea onKeyDown={(e) => checkInput(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea"></textarea>
           <div className="control_panel">
-            <input id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
-            {/* <button className="add_file_btn"><AddFileIcon/></button> */}
+            <div className="add_file_container">
+              <button className="add_file_btn" onClick={() => document.getElementById("file_input")!.click()}><AddFileIcon/></button>
+              <p id="file_name"></p>
+            </div>
+            <input className="file_input" id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
             <button onClick={() => { sendMessage();}} className="send_btn"><Arrow/></button>
           </div>
         </div>
       </section>
     </main>
-  )
-}
+  );
+};
