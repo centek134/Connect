@@ -8,9 +8,24 @@
   background-color: #3F0E40;
   color: rgba(255, 255, 255, 0.8);
 }
-.header .avatar_icon {
+.header .user_wrapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header .user_wrapp .avatar_icon {
   width: 30px;
   height: 30px;
+  border-radius: 50%;
+}
+.header .user_wrapp .avatar_name {
+  font-size: 14px;
+  padding: 0 5px;
+}
+@media only screen and (max-width: 600px) {
+  .header .user_wrapp .avatar_name {
+    font-size: 8px;
+  }
 }
 .header .input {
   display: flex;
@@ -22,10 +37,22 @@
   border-radius: 10px;
   background-color: rgba(103, 23, 104, 0.76);
 }
+@media only screen and (max-width: 600px) {
+  .header .input {
+    width: 150px;
+    font-size: 8px;
+  }
+}
 .header .input .search_icon {
   color: #fff;
   width: 20px;
   height: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .header .input .search_icon {
+    width: 10px;
+    height: 10px;
+  }
 }
 .header .help_icon {
   width: 30px;

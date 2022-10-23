@@ -43,6 +43,9 @@
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 outline: none;
+                @media only screen and (max-width:600px) {
+                    font-size: 12px;
+                 }
             }
             .control_panel{
                 width: 100%;
@@ -53,20 +56,27 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                .add_file_btn{
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    cursor: pointer;
+                .add_file_container{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .add_file_btn{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        cursor: pointer;
+                    }
                 }
-                .send_btn{
-                    width: 30px;
-                    height: 30px;
-                    height: 100%;
-                    cursor: pointer;
-                    background-color: transparent;
+                    .send_btn{
+                        width: 30px;
+                        height: 30px;
+                        height: 100%;
+                        cursor: pointer;
+                        background-color: transparent;
+                    }
+                    .file_input{
+                    visibility: hidden;
                 }
-
             }
         }
     }
@@ -78,8 +88,9 @@
         border-bottom: 1px solid rgb(161, 161, 161);
         .chat_header_name{
             padding: 0 0 0 20px;
+            @media only screen and (max-width:600px) {
+                font-size: 14px;
+            }
         }
-
     }
-
 }

@@ -36,11 +36,17 @@
                 padding: 0 0 0 10px;
                 font-size: 14px;
                 font-weight: 600;
-                
+                @media only screen and (max-width:600px) {
+                    font-size: 8px;
+                }
             }
             .item_logo{
                 width: 20px;
                 height: 20px;
+                @media only screen and (max-width:600px) {
+                    width: 10px;
+                    height: 10px;
+                }
             }
         }
     }
@@ -50,6 +56,9 @@
         .chat_list_heading{
             padding: 5px 0 5px 15px;
             font-weight: 400;
+            @media only screen and (max-width:600px) {
+                font-size: 10px;
+            }
         }
     }
 }
