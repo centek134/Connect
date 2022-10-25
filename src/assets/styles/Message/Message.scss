@@ -33,9 +33,33 @@
                font-size: 12px;
             }
         }
-        .message_img{
+        .container_message_img{
             width: 50%;
             height: 50%;
+            &:hover{
+                cursor:zoom-in;
+            }
+            .message_img{
+                width: 100%;
+                height: 100%;
+            } 
+        }
+        .container_message_img.zoom{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-color: #000000af;
+            &:hover{
+                cursor: zoom-out;
+            }
+            .message_img{
+                object-fit: contain;
+            }
         }
     }
 }
