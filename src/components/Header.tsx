@@ -1,7 +1,7 @@
 import React from "react";
-import {ReactComponent as SearchIcon} from "../assets/icons/Search.svg";
-import {ReactComponent as HelpIcon} from "../assets/icons/Help.svg";
-import {ReactComponent as AvatarIcon} from "../assets/icons/Avatar.svg";
+import {ReactComponent as SearchIcon} from "../assets/icons/Header/Search.svg";
+import {ReactComponent as HelpIcon} from "../assets/icons/Header/Help.svg";
+import {ReactComponent as AvatarIcon} from "../assets/icons/Header/Avatar.svg";
 import "../assets/styles/Header/Header.css";
 
 

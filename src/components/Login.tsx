@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import "../assets/styles/Login/Login.css";
-import Avatar from "../assets/icons/Avatar.svg"
+import Avatar from "../assets/icons/Header/Avatar.svg"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import  "firebase/compat/app";
 

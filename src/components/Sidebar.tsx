@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { db, collection,  getDocs} from "../firebase";
 import "../assets/styles/Sidebar/Sidebar.css";
-import {ReactComponent as ThreadsSVG} from "../assets/icons/Threads.svg";
-import {ReactComponent as FilesSVG} from "../assets/icons/Files.svg";
-import {ReactComponent as DraftsSVG} from "../assets/icons/Drafts.svg";
-import {ReactComponent as MentionsSVG} from "../assets/icons/Mentions.svg";
-import {ReactComponent as SavedItemsSVG} from "../assets/icons/SavedItems.svg";
-import {ReactComponent as AppsSVG} from "../assets/icons/Apps.svg";
+import {ReactComponent as ThreadsSVG} from "../assets/icons/Sidebar/Threads.svg";
+import {ReactComponent as FilesSVG} from "../assets/icons/Sidebar/Files.svg";
+import {ReactComponent as DraftsSVG} from "../assets/icons/Sidebar/Drafts.svg";
+import {ReactComponent as MentionsSVG} from "../assets/icons/Sidebar/Mentions.svg";
+import {ReactComponent as SavedItemsSVG} from "../assets/icons/Sidebar/SavedItems.svg";
+import {ReactComponent as AppsSVG} from "../assets/icons/Sidebar/Apps.svg";
 import { RoomItem } from "./index";
 
 export const Sidebar = () => {
