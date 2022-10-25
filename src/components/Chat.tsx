@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "../assets/styles/Chat/Chat.css";
-import {ReactComponent as Arrow } from "../assets/icons/Arrow.svg";
-import {ReactComponent as AddFileIcon } from "../assets/icons/AddFileIcon.svg";
+import {ReactComponent as Arrow } from "../assets/icons/Chat/Arrow.svg";
+import {ReactComponent as AddFileIcon } from "../assets/icons/Chat/AddFileIcon.svg";
 import { Message } from "./index";
 import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes, getDownloadURL } from "../firebase";
 import {useParams} from "react-router-dom";
@@ -24,10 +24,10 @@ export const Chat = ({user}:Props) => {
   async function imgUpload(img:File){
     if(img === null) return;
     document.getElementById("file_name")!.innerHTML = `${img.name.slice(0,10)}...`;
-    const uploadRef = ref(storage,`files/${img.name}`);
+    const uploadRef = ref(storage,`files/${roomId}/${img.name}`);
     console.log( uploadRef,);
     await uploadBytes(uploadRef,img);
-    await getDownloadURL(ref(storage,`files/${img.name}`)).then(res =>{ 
+    await getDownloadURL(ref(storage,`files/${roomId}/${img.name}`)).then(res =>{ 
       setUploadImgUrl(res);
     });
   };
