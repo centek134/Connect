@@ -37,10 +37,22 @@
 .nav .nav_list .list_item .item_text {
   padding: 0 0 0 10px;
   font-size: 14px;
+  font-weight: 600;
+}
+@media only screen and (max-width: 600px) {
+  .nav .nav_list .list_item .item_text {
+    font-size: 8px;
+  }
 }
 .nav .nav_list .list_item .item_logo {
   width: 20px;
   height: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .nav .nav_list .list_item .item_logo {
+    width: 10px;
+    height: 10px;
+  }
 }
 .nav .nav_chat_list {
   width: 100%;
@@ -48,4 +60,10 @@
 }
 .nav .nav_chat_list .chat_list_heading {
   padding: 5px 0 5px 15px;
+  font-weight: 400;
+}
+@media only screen and (max-width: 600px) {
+  .nav .nav_chat_list .chat_list_heading {
+    font-size: 10px;
+  }
 }/*# sourceMappingURL=Sidebar.css.map */

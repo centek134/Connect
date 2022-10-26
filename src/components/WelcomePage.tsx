@@ -1,6 +1,6 @@
 import React from "react";
 import "../assets/styles/WelcomePage/WelcomePage.css";
-import {ReactComponent as WelcomeIcon} from "../assets/icons/Welcome.svg";
+import {ReactComponent as WelcomeIcon} from "../assets/icons/Chat/Welcome.svg";
 export const WelcomePage = () => {
   return (
     <section className="welcome_page_wrapper">

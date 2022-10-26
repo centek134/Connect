@@ -8,9 +8,22 @@
     padding: 10px;
     background-color:$header_bg;
     color: $font_color;
-    .avatar_icon{
-        width: 30px; 
-        height: 30px;
+    .user_wrapp{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .avatar_icon{
+            width: 30px; 
+            height: 30px;
+            border-radius: 50%;
+        }
+        .avatar_name{
+            font-size: 14px;
+            padding: 0 5px;
+            @media only screen and (max-width:600px) {
+                font-size: 8px;
+             }
+        }
     }
     .input{
         display: flex;
@@ -21,10 +34,18 @@
         padding: 0 10px;
         border-radius: 10px;
         background-color: $header_input_bg;
+        @media only screen and (max-width:600px) {
+            width: 150px;
+            font-size: 8px;
+         }
         .search_icon{
             color: #fff;
             width: 20px;
             height: 20px;
+            @media only screen and (max-width:600px) {
+                width: 10px;
+                height: 10px;
+             }
         }
     }
     .help_icon{

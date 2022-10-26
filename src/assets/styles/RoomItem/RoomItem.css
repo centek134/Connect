@@ -15,4 +15,9 @@
 .room_link .room_item .room_text {
   padding: 0 0 0 10px;
   font-size: 14px;
+}
+@media only screen and (max-width: 600px) {
+  .room_link .room_item .room_text {
+    font-size: 8px;
+  }
 }/*# sourceMappingURL=RoomItem.css.map */

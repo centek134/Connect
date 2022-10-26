@@ -19,4 +19,10 @@
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: "header header" "sidebar chat_container";
+  position: relative;
+}
+@media only screen and (max-width: 600px) {
+  .app .app_body {
+    grid-template-columns: 100px 1fr;
+  }
 }/*# sourceMappingURL=App.css.map */
