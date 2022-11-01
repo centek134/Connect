@@ -110,25 +110,25 @@ export const Chat = ({user}:Props) => {
   };
 
   return (
-    <main className="chat_container">
-      <header className="chat_header">
-        <h3 className="chat_header_name"># {roomName}</h3>
+    <main className="chat-container">
+      <header className="chat-container__header">
+        <h3 className="header__name"># {roomName}</h3>
       </header>
-      <section className="chat_body">
+      <section className="chat-container__body">
         {messages.map((item,i) => {
           return <Message key={i} imgUrl={item.imgUrl} message={item.message} timeStamp={item.timeStamp} userImage={item.userImage} userName={item.userName}/>
         })}
       </section>
-      <section className="chat_panel">
-        <div className="panel_container">
-          <textarea onKeyDown={(e) => checkInput(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="chat_textarea"></textarea>
-          <div className="control_panel">
-            <div className="add_file_container">
-              <button className="add_file_btn" onClick={() => document.getElementById("file_input")!.click()}><AddFileIcon/></button>
-              <p id="file_name"></p>
+      <section className="chat-container__panel">
+        <div className="wrapper">
+          <textarea onKeyDown={(e) => checkInput(e)} onChange={(e) => writeMessage(e)} value={messageInput} placeholder="Jot something down..." className="wrapper__textarea"></textarea>
+          <div className="wrapper__button-area">
+            <div className="button-area__file-btn-wrapper">
+              <button className="file-btn-wrapper__file-btn" onClick={() => document.getElementById("file_input")!.click()}><AddFileIcon/></button>
+              <p className="file-btn-wrapper__file-name" id="file_name"></p>
             </div>
-            <input className="file_input" id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
-            <button onClick={() => { sendMessage();}} className="send_btn"><Arrow/></button>
+            <input className="button-area__file-input --hidden" id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
+            <button onClick={() => { sendMessage();}} className="button-area__send-btn"><Arrow/></button>
           </div>
         </div>
       </section>

@@ -3,58 +3,58 @@
   align-items: flex-start;
   margin-top: 10px;
 }
-.message .message_user_image {
+.message .message__user-image {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 @media only screen and (max-width: 600px) {
-  .message .message_user_image {
+  .message .message__user-image {
     width: 30px;
     height: 30px;
   }
 }
-.message .text_wrapp {
+.message .message__content-wrapp {
   margin-left: 5px;
 }
-.message .text_wrapp .message_username {
+.message .message__content-wrapp .content-wrapp__username {
   font-size: 14px;
 }
 @media only screen and (max-width: 600px) {
-  .message .text_wrapp .message_username {
+  .message .message__content-wrapp .content-wrapp__username {
     font-size: 10px;
   }
 }
-.message .text_wrapp .message_username .message_timestamp {
+.message .message__content-wrapp .content-wrapp__username .content-wrapp__username__timestamp {
   font-weight: 300;
   font-size: 12px;
   color: gray;
 }
 @media only screen and (max-width: 600px) {
-  .message .text_wrapp .message_username .message_timestamp {
+  .message .message__content-wrapp .content-wrapp__username .content-wrapp__username__timestamp {
     font-size: 10px;
   }
 }
-.message .text_wrapp .message_text {
+.message .message__content-wrapp .content-wrapp__message-text {
   margin: 5px 0 0 5px;
 }
 @media only screen and (max-width: 600px) {
-  .message .text_wrapp .message_text {
+  .message .message__content-wrapp .content-wrapp__message-text {
     font-size: 12px;
   }
 }
-.message .text_wrapp .container_message_img {
+.message .message__content-wrapp .content-wrapp__img-wrapper {
   width: 50%;
   height: 50%;
 }
-.message .text_wrapp .container_message_img:hover {
+.message .message__content-wrapp .content-wrapp__img-wrapper:hover {
   cursor: zoom-in;
 }
-.message .text_wrapp .container_message_img .message_img {
+.message .message__content-wrapp .content-wrapp__img-wrapper .img-wrapper__img-sent {
   width: 100%;
   height: 100%;
 }
-.message .text_wrapp .container_message_img.zoom {
+.message .message__content-wrapp .content-wrapp__img-wrapper.img-wrapper_zoom {
   position: absolute;
   top: 0;
   left: 0;
@@ -63,12 +63,12 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6862745098);
+  background-color: rgba(0, 0, 0, 0.9058823529);
 }
-.message .text_wrapp .container_message_img.zoom:hover {
+.message .message__content-wrapp .content-wrapp__img-wrapper.img-wrapper_zoom:hover {
   cursor: zoom-out;
 }
-.message .text_wrapp .container_message_img.zoom .message_img {
+.message .message__content-wrapp .content-wrapp__img-wrapper.img-wrapper_zoom .img-wrapper__img-sent {
   -o-object-fit: contain;
      object-fit: contain;
 }/*# sourceMappingURL=Message.css.map */
