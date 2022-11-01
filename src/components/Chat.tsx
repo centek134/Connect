@@ -127,7 +127,7 @@ export const Chat = ({user}:Props) => {
               <button className="file-btn-wrapper__file-btn" onClick={() => document.getElementById("file_input")!.click()}><AddFileIcon/></button>
               <p className="file-btn-wrapper__file-name" id="file_name"></p>
             </div>
-            <input className="button-area__file-input --hidden" id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
+            <input className="button-area__file-input file-input_hidden" id="file_input" onChange={(event) => {fileExtensionValidation(event)}} type="file" accept="image/*"/>
             <button onClick={() => { sendMessage();}} className="button-area__send-btn"><Arrow/></button>
           </div>
         </div>

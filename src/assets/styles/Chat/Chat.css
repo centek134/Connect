@@ -83,7 +83,7 @@
   cursor: pointer;
   background-color: transparent;
 }
-.chat-container .chat-container__panel .wrapper .wrapper__button-area .button-area__file-input.--hidden {
+.chat-container .chat-container__panel .wrapper .wrapper__button-area .button-area__file-input.file-input_hidden {
   visibility: hidden;
 }
 .chat-container .chat-container__header {
