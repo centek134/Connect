@@ -30,13 +30,13 @@ export const Login = ({setUser}:Props) => {
         });
     };
   return (
-    <section className="login_section">
-        <div className="login_panel">
-            <h1 className="panel_header">Contact</h1>
-            <p className="panel_text">Do you like typing with people? Don't let this opportunity slip away! Let's join us and start making friends.</p>
-            <div className="button_container">
-            <button className="login_btn google" onClick={signInGoogle}>Sign in with Google</button>
-            <button className="login_btn guest" onClick={signInGuest} >Sign in as Guest</button>
+    <section className="login">
+        <div className="login__panel">
+            <h1 className="login__panel__header">Contact</h1>
+            <p className="login__panel__text">Do you like typing with people? Don't let this opportunity slip away! Let's join us and start making friends.</p>
+            <div className="login__panel__btn-wrapp">
+            <button className="btn-wrapp__login-btn" onClick={signInGoogle}>Sign in with Google</button>
+            <button className="btn-wrapp__login-btn" onClick={signInGuest} >Sign in as Guest</button>
             </div>
         </div>
     </section>

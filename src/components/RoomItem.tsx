@@ -9,6 +9,6 @@ type Props = {
 
 export const RoomItem = ({ roomName, roomId}:Props) => {
   return (
-    <Link className="room_link" to={`/room/${roomId}`}><li className="room_item"><p className="room_text"># {roomName}</p></li></Link>
+    <Link className="link" to={`/room/${roomId}`}><li className="link__item"><p className="link__item__text"># {roomName}</p></li></Link>
   );
 };

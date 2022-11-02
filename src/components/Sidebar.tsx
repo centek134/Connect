@@ -29,30 +29,31 @@ export const Sidebar = () => {
     },[]);
     
   async function addChannel(){
-    const roomName = prompt("Please enter channel name (max 10 characters):");
-    if(roomName!.length <= 10){
+    const roomName = prompt("Please enter channel name (between 3-10 characters):");
+    if((roomName!.length >= 3) && (roomName!.length <= 10)){
       await addDoc(collection(db,"rooms"),{
         name:roomName
       });
     }
     else{
       alert("Room name is too long, please provide another name.");
+      return;
     };
   };
 
   return (
       <nav className="nav">
-        <ul className="nav_list">
-          <li className="list_item"><ThreadsSVG className="item_logo"/><p className="item_text">Threads</p></li>
-          <li className="list_item"><MentionsSVG className="item_logo"/><p className="item_text">Mentions & Reactions</p></li>
-          <li className="list_item"><DraftsSVG className="item_logo"/><p className="item_text">Drafts</p></li>
-          <li className="list_item"><SavedItemsSVG className="item_logo"/><p className="item_text">Saved Items</p></li>
-          <li className="list_item"><FilesSVG className="item_logo"/><p className="item_text">Files</p></li>
-          <li className="list_item"><AppsSVG className="item_logo"/><p className="item_text">Apps</p></li>
-          <li onClick={addChannel} className="list_item"><PlusSVG className="item_logo"/><p className="item_text">Add channel</p></li>
+        <ul className="nav__list">
+          <li className="list__item"><ThreadsSVG className="item__logo"/><p className="item__text">Threads</p></li>
+          <li className="list__item"><MentionsSVG className="item__logo"/><p className="item__text">Mentions & Reactions</p></li>
+          <li className="list__item"><DraftsSVG className="item__logo"/><p className="item__text">Drafts</p></li>
+          <li className="list__item"><SavedItemsSVG className="item__logo"/><p className="item__text">Saved Items</p></li>
+          <li className="list__item"><FilesSVG className="item__logo"/><p className="item__text">Files</p></li>
+          <li className="list__item"><AppsSVG className="item__logo"/><p className="item__text">Apps</p></li>
+          <li onClick={addChannel} className="list__item"><PlusSVG className="item__logo"/><p className="item__text">Add channel</p></li>
         </ul>
-        <ul className="nav_chat_list">
-          <h3 className="chat_list_heading">Channels</h3>
+        <ul className="nav__chat-list">
+          <h3 className="nav__chat-list__heading">Channels</h3>
           {rooms.map((item,i) => {
             return(<RoomItem key={i} roomId={item.roomId} roomName={item.roomName} />)
           })}
