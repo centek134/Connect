@@ -18,52 +18,50 @@
   background-color: rgba(194, 194, 194, 0.6431372549);
   border-radius: 5px;
 }
-.nav .nav_list {
+.nav .nav__list {
   width: 100%;
   padding: 5px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5254901961);
   border-top: 1px solid rgba(255, 255, 255, 0.5254901961);
 }
-.nav .nav_list .list_item {
+.nav .nav__list .list__item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 5px 0 5px 15px;
   cursor: pointer;
 }
-.nav .nav_list .list_item:hover {
+.nav .nav__list .list__item:hover {
   background-color: #390d3a;
 }
-.nav .nav_list .list_item .item_text {
+.nav .nav__list .list__item .item__text {
   padding: 0 0 0 10px;
   font-size: 14px;
   font-weight: 600;
 }
-@media only screen and (max-width: 600px) {
-  .nav .nav_list .list_item .item_text {
-    font-size: 8px;
-  }
-}
-.nav .nav_list .list_item .item_logo {
+.nav .nav__list .list__item .item__logo {
   width: 20px;
   height: 20px;
 }
-@media only screen and (max-width: 600px) {
-  .nav .nav_list .list_item .item_logo {
-    width: 10px;
-    height: 10px;
-  }
-}
-.nav .nav_chat_list {
+.nav .nav__chat-list {
   width: 100%;
   padding: 5px 0;
 }
-.nav .nav_chat_list .chat_list_heading {
+.nav .nav__chat-list .nav__chat-list__heading {
   padding: 5px 0 5px 15px;
   font-weight: 400;
 }
 @media only screen and (max-width: 600px) {
-  .nav .nav_chat_list .chat_list_heading {
+  .nav .nav__chat-list .nav__chat-list__heading {
     font-size: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .nav .nav__list .list__item .item__text {
+    font-size: 8px;
+  }
+  .nav .nav__list .list__item .item__logo {
+    width: 10px;
+    height: 10px;
   }
 }/*# sourceMappingURL=Sidebar.css.map */

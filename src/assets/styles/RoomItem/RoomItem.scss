@@ -1,8 +1,8 @@
 @import "../Global/Global.scss";
-.room_link{
+.link{
     text-decoration: none;
     color: $sidebar_font_color;
-        .room_item{
+        .link__item{
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -11,10 +11,14 @@
         &:hover{
             background-color:$nav_item_bg_hover ;
         }
-        .room_text{
+        .link__item__text{
             padding: 0 0 0 10px;
             font-size: 14px;
-            @media only screen and (max-width:600px) {
+        }
+    }
+    @media only screen and (max-width:600px) {
+        .link__item{
+            .link__item__text{
                 font-size: 8px;
             }
         }

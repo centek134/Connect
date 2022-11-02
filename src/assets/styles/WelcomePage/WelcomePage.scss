@@ -1,21 +1,43 @@
-.welcome_page_wrapper{
+.welcome-page{
     grid-area: chat_container;
     display: flex;
     justify-content: center;
     align-items: center;
-    .welcome_container{
+    .welcome-page__article{
         width: 70%;
         height: 30%;
-        .welcome_header_cont{
+        .article__heading-wrapp{
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
+            .article__header-wrapp__icon{
+                width: 50px;
+                height: 50px;
+            }
+            .article__header-wrapp__heading{
+                font-size: 30px;
+            }
         }
-        .welcome_text{
+        .article__text{
             padding-top: 20px;
             text-align: center;
             font-size: 20px;
         }
     }
+    @media only screen and (max-width:600px) {
+        .welcome-page__article{
+            .article__heading-wrapp{
+                .article__header-wrapp__icon{
+                    width: 25px;
+                    height: 25px;
+                }
+                .article__header-wrapp__heading{
+                    font-size: 16px;
+                }
+            }
+            .article__text{
+                font-size: 12px;
+            }
+        }
+     }
 }

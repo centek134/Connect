@@ -18,12 +18,12 @@
         background-color: #c2c2c2a4;
         border-radius: 5px;
     }
-    .nav_list{
+    .nav__list{
         width: 100%;
         padding: 5px 0;
         border-bottom: 1px solid #ffffff86;
         border-top: 1px solid #ffffff86;;
-        .list_item{
+        .list__item{
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -32,33 +32,35 @@
             &:hover{
                 background-color:$nav_item_bg_hover ;
             }
-            .item_text{
+            .item__text{
                 padding: 0 0 0 10px;
                 font-size: 14px;
                 font-weight: 600;
-                @media only screen and (max-width:600px) {
-                    font-size: 8px;
-                }
             }
-            .item_logo{
+            .item__logo{
                 width: 20px;
                 height: 20px;
-                @media only screen and (max-width:600px) {
-                    width: 10px;
-                    height: 10px;
-                }
             }
         }
     }
-    .nav_chat_list{
+    .nav__chat-list{
         width: 100%;
         padding: 5px 0;
-        .chat_list_heading{
+        .nav__chat-list__heading{
             padding: 5px 0 5px 15px;
             font-weight: 400;
             @media only screen and (max-width:600px) {
                 font-size: 10px;
             }
+        }
+    }
+    @media only screen and (max-width:600px) {
+        .nav__list .list__item .item__text{
+            font-size: 8px;
+        }
+        .nav__list .list__item .item__logo{
+            width: 10px;
+            height: 10px;
         }
     }
 }

@@ -1,23 +1,23 @@
-.room_link {
+.link {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
 }
-.room_link .room_item {
+.link .link__item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 5px 0 5px 15px;
   cursor: pointer;
 }
-.room_link .room_item:hover {
+.link .link__item:hover {
   background-color: #390d3a;
 }
-.room_link .room_item .room_text {
+.link .link__item .link__item__text {
   padding: 0 0 0 10px;
   font-size: 14px;
 }
 @media only screen and (max-width: 600px) {
-  .room_link .room_item .room_text {
+  .link .link__item .link__item__text {
     font-size: 8px;
   }
 }/*# sourceMappingURL=RoomItem.css.map */

@@ -1,11 +1,11 @@
-.login_section{
+.login{
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color:#8606ad ;
-    .login_panel{
+    .login__panel{
         max-width: 600px;
         height: 200px;
         padding: 0 20px;
@@ -14,18 +14,18 @@
         flex-direction: column;
         justify-content: space-around;
         color: #fff;
-        .panel_header{
+        .login__panel__header{
             font-size: 46px;
         }
-        .panel_text{
+        .login__panel__text{
             font-size: 20px;
             text-align: center;
         }
-        .button_container{
+        .login__panel__btn-wrapp{
             width: 100%;
             display: flex;
             justify-content: space-evenly;
-            .login_btn{
+            .btn-wrapp__login-btn{
                 font-size: 16px;
                 font-weight: 700;
                 width: 40%;
@@ -39,7 +39,20 @@
                     background-color: #fff;
                     color: #8606ad;
                 }
-                
+            }
+        }
+    }
+    @media only screen and (max-width:600px) {
+        .login__panel{
+            .login__panel__header{
+                font-size: 32px;
+            }
+            .login__panel__text{
+                font-size: 16px;
+            }
+            .login__panel__btn-wrapp .btn-wrapp__login-btn{
+                font-size: 12px;
+                padding: 10px 5px;
             }
         }
     }

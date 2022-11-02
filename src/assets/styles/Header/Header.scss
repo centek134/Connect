@@ -8,16 +8,16 @@
     padding: 10px;
     background-color:$header_bg;
     color: $font_color;
-    .user_wrapp{
+    .header__user-wrapp{
         display: flex;
         align-items: center;
         justify-content: center;
-        .avatar_icon{
+        .header__user-wrapp__avatar-icon{
             width: 30px; 
             height: 30px;
             border-radius: 50%;
         }
-        .avatar_name{
+        .header__user-wrapp__avatar-name{
             font-size: 14px;
             padding: 0 5px;
             @media only screen and (max-width:600px) {
@@ -25,7 +25,7 @@
              }
         }
     }
-    .input{
+    .header__input{
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -34,22 +34,24 @@
         padding: 0 10px;
         border-radius: 10px;
         background-color: $header_input_bg;
-        @media only screen and (max-width:600px) {
-            width: 150px;
-            font-size: 8px;
-         }
-        .search_icon{
+        .header__input__search-icon{
             color: #fff;
             width: 20px;
             height: 20px;
-            @media only screen and (max-width:600px) {
-                width: 10px;
-                height: 10px;
-             }
         }
     }
-    .help_icon{
+    .header__help-icon{
         width: 30px;
         height: 30px;
     }
+    @media only screen and (max-width:600px) {
+        .header__input{
+            width: 150px;
+            font-size: 8px;
+            .header__input__search-icon{
+                width: 10px;
+                height: 10px;
+            }
+        }
+     }
 }
