@@ -6,32 +6,19 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        @media only screen and (max-width:600px) {
-            width: 30px;
-            height: 30px;
-        }
     }
     .message__content-wrapp{
         margin-left: 5px;
         .content-wrapp__username{
             font-size: 14px;
-            @media only screen and (max-width:600px) {
-                font-size: 10px;
-            }
             .content-wrapp__username__timestamp{
                 font-weight: 300;
                 font-size: 12px;
                 color: gray;
-                @media only screen and (max-width:600px) {
-                    font-size: 10px;
-                }
             }
         }
         .content-wrapp__message-text{
             margin:5px 0 0 5px;
-            @media only screen and (max-width:600px) {
-               font-size: 12px;
-            }
         }
         .content-wrapp__img-wrapper{
             width: 50%;
@@ -59,6 +46,23 @@
             }
             .img-wrapper__img-sent{
                 object-fit: contain;
+            }
+        }
+    }
+    @media only screen and (max-width:600px) {
+        .message__user-image{
+            width: 30px;
+            height: 30px;
+            .message__content-wrapp{
+                .content-wrapp__username{
+                    font-size: 10px;
+                    .content-wrapp__username__timestamp{
+                        font-size: 10px;
+                    }
+                }
+                .content-wrapp__message-text{
+                    font-size: 12px;
+                }
             }
         }
     }
