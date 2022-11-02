@@ -19,6 +19,7 @@ export const Chat = ({user}:Props) => {
   
   useEffect(() => {
     fetchServerData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[roomId]);
   
   async function imgUpload(img:File){
