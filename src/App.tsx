@@ -21,5 +21,5 @@ const App = () => {
     </div>
   );
 };
-
+// Project created by Tomasz Osuch all rights reserved ©
 export default App;
