@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { db, collection, addDoc, onSnapshot} from "../firebase";
+import {Link} from "react-router-dom"
 import "../assets/styles/Sidebar/Sidebar.css";
 import {ReactComponent as ThreadsSVG} from "../assets/icons/Sidebar/Threads.svg";
 import {ReactComponent as FilesSVG} from "../assets/icons/Sidebar/Files.svg";
@@ -48,7 +49,7 @@ export const Sidebar = () => {
           <li className="list__item"><MentionsSVG className="item__logo"/><p className="item__text">Mentions & Reactions</p></li>
           <li className="list__item"><DraftsSVG className="item__logo"/><p className="item__text">Drafts</p></li>
           <li className="list__item"><SavedItemsSVG className="item__logo"/><p className="item__text">Saved Items</p></li>
-          <li className="list__item"><FilesSVG className="item__logo"/><p className="item__text">Files</p></li>
+          <Link to={"./files"} className="list__item"><FilesSVG className="item__logo"/><p className="item__text">Files</p></Link>
           <li className="list__item"><AppsSVG className="item__logo"/><p className="item__text">Apps</p></li>
           <li onClick={addChannel} className="list__item"><PlusSVG className="item__logo"/><p className="item__text">Add channel</p></li>
         </ul>
@@ -59,5 +60,5 @@ export const Sidebar = () => {
           })}
         </ul>
       </nav>
-  )
-}
+  );
+};
