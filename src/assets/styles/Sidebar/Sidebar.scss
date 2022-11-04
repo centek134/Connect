@@ -28,6 +28,8 @@
             align-items: center;
             justify-content: flex-start;
             padding: 5px 0 5px 15px;
+            text-decoration: none;
+            color: inherit;
             cursor: pointer;
             &:hover{
                 background-color:$nav_item_bg_hover ;
