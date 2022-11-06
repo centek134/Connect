@@ -17,13 +17,13 @@
   padding: 0 0 0 20px;
 }
 .files-container .files-container__room-list {
+  padding-left: 20px;
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
 }
 .files-container .files-container__room-list .room-list__paragraph {
-  padding: 0 0 0 10px;
   font-weight: 600;
 }
 .files-container .files-container__room-list .room-list__button {
@@ -39,4 +39,31 @@
 .files-container .files-container__room-list .room-list__button:hover {
   background-color: #000;
   color: #fff;
+}
+.files-container .files-container__file-list {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+.files-container .files-container__file-list .file-list__item-wrap {
+  background-color: #fff;
+  border-radius: 5px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.1529411765);
+}
+.files-container .files-container__file-list .file-list__item-wrap:hover {
+  border: 1px solid rgba(0, 0, 0, 0.2941176471);
+  cursor: zoom-in;
+}
+.files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__img {
+  margin: 10px 0 10px 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+.files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__name {
+  padding: 10px 0 10px 10px;
+  font-weight: 600;
 }/*# sourceMappingURL=Files.css.map */
