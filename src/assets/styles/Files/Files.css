@@ -53,15 +53,15 @@
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.1529411765);
 }
-.files-container .files-container__file-list .file-list__item-wrap:hover {
-  border: 1px solid rgba(0, 0, 0, 0.2941176471);
-  cursor: zoom-in;
-}
 .files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__img {
   margin: 10px 0 10px 10px;
   width: 60px;
   height: 60px;
   border-radius: 5px;
+}
+.files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__img:hover {
+  border: 1px solid rgba(0, 0, 0, 0.2941176471);
+  cursor: zoom-in;
 }
 .files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__name {
   padding: 10px 0 10px 10px;

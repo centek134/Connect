@@ -50,15 +50,15 @@
             width: 100%;
             display: flex;
             border: 1px solid #00000027;
-            &:hover{
-                border: 1px solid #0000004b;
-                cursor: zoom-in;
-            }
             .file-list__item-wrap__img{
                 margin: 10px 0 10px 10px;
                 width: 60px;
                 height: 60px;
                 border-radius: 5px;
+                &:hover{
+                    border: 1px solid #0000004b;
+                    cursor: zoom-in;
+                }
             }
             .file-list__item-wrap__name{
                 padding: 10px 0 10px 10px;
