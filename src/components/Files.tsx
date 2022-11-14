@@ -1,4 +1,4 @@
-import React ,{ useEffect, useState} from 'react';
+import React ,{  useEffect, useState} from 'react';
 import {db, collection, onSnapshot, ref, storage, getDownloadURL, list} from "../firebase";
 import { FileItem } from "./index";
 import "../assets/styles/Files/Files.css";
@@ -10,7 +10,7 @@ export const Files = () => {
     useEffect( () => { fetchData(); },[]); 
 
     async function fetchData(){
-      const querySnapshot = await collection(db,"rooms");
+      const querySnapshot = collection(db,"rooms");
       onSnapshot(querySnapshot,(snap) => {
         setFileFolders(
             snap.docs.map(item => ({
@@ -40,6 +40,11 @@ export const Files = () => {
     });
   };
 
+  const btnClassHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
+    document.querySelectorAll(".room-list__button").forEach(item => item.classList.remove("_button-black"));
+    e.currentTarget.classList.add("_button-black");
+  };
+  
   return (
     <main className="files-container">
       <header className="files-container__header">
@@ -47,7 +52,7 @@ export const Files = () => {
       </header>
       <section className="files-container__room-list">
         <p className="room-list__paragraph">Rooms:</p>
-        {fileFolders.map((item, i) => <button onClick={() => fetchImages(item.fileFoldersId)} className="room-list__button" key={i}>{item.fileFoldersName}</button>)}
+        {fileFolders.map((item, i) => <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {fetchImages(item.fileFoldersId); btnClassHandler(e) }} className="room-list__button" key={i}>{item.fileFoldersName}</button>)}
       </section>
       <section className="files-container__file-list">
         {fileList? fileList.map((item,i) => <FileItem key={i} fileName={item.fileName} fileUrl={item.fileUrl}/>):null} 
