@@ -20,8 +20,19 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 40px;
+  min-height: 50px;
   padding-left: 20px;
+  overflow-x: scroll;
+}
+.files-container .files-container__room-list::-webkit-scrollbar {
+  height: 5px;
+}
+.files-container .files-container__room-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.files-container .files-container__room-list::-webkit-scrollbar-thumb {
+  background-color: rgba(194, 194, 194, 0.6431372549);
+  border-radius: 5px;
 }
 .files-container .files-container__room-list .room-list__paragraph {
   font-weight: 600;
@@ -37,6 +48,10 @@
   cursor: pointer;
 }
 .files-container .files-container__room-list .room-list__button:hover {
+  background-color: #000;
+  color: #fff;
+}
+.files-container .files-container__room-list .room-list__button._button-black {
   background-color: #000;
   color: #fff;
 }
@@ -57,29 +72,14 @@
   background-color: rgba(194, 194, 194, 0.6431372549);
   border-radius: 5px;
 }
-.files-container .files-container__file-list .file-list__item-wrap {
-  display: flex;
-  width: 100%;
-  height: 80px;
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1529411765);
-  margin: 5px 0;
-}
-.files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__img {
-  width: 60px;
-  height: 60px;
-  margin: 10px 0 10px 10px;
-  border-radius: 5px;
-}
-.files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__img:hover {
-  border: 1px solid rgba(0, 0, 0, 0.2941176471);
-  cursor: zoom-in;
-}
-.files-container .files-container__file-list .file-list__item-wrap .file-list__item-wrap__name {
-  width: 100%;
-  height: 100%;
-  padding: 10px 10px;
-  font-weight: 600;
-  word-break: break-all;
+@media only screen and (max-width: 600px) {
+  .files-container .files-container__header .header__heading {
+    font-size: 14px;
+  }
+  .files-container .files-container__room-list .room-list__paragraph {
+    font-size: 12px;
+  }
+  .files-container .files-container__room-list .room-list__button {
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=Files.css.map */
