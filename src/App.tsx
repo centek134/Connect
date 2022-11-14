@@ -1,6 +1,6 @@
 import React ,{ useState}from "react";
 import "./assets/styles/App/App.css";
-import {Chat, Sidebar, Header, WelcomePage, Login} from "./components/index";
+import {Chat, Sidebar, Header, WelcomePage, Login, Files} from "./components/index";
 import {Routes, Route } from "react-router-dom";
 const App = () => {
   const [user, setUser] = useState<null | {name:string,userImg:string}>(null);
@@ -12,6 +12,7 @@ const App = () => {
         <Sidebar/>
         <Routes>
           <Route path="/" element={<WelcomePage/>}/>
+          <Route path="/files" element={<Files/>}/>
           <Route path="/room/:roomid" element={<Chat user = {user}/>}/>
         </Routes>
       </section>
@@ -21,5 +22,5 @@ const App = () => {
     </div>
   );
 };
-
+// Project created by Tomasz Osuch all rights reserved ©
 export default App;

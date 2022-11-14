@@ -29,6 +29,8 @@
   align-items: center;
   justify-content: flex-start;
   padding: 5px 0 5px 15px;
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
 }
 .nav .nav__list .list__item:hover {

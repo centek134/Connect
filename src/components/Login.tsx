@@ -22,12 +22,22 @@ export const Login = ({setUser}:Props) => {
     };
 
     const signInGuest = () => {
-        const randomNumber: number = Math.floor(Math.random()*10000) + 1;
-        const name = `Guest${randomNumber.toString()}`;
-        setUser({
-            name:name,
-            userImg:Avatar
-        });
+        const user:string = localStorage.getItem("user")!;
+        if(user){
+            setUser({
+                name: user,
+                userImg:Avatar
+            });
+        }
+        else{
+            const randomNumber: number = Math.floor(Math.random()*10000) + 1;
+            const name = `Guest${randomNumber.toString()}`;
+            localStorage.setItem("user", name);
+            setUser({
+                name:name,
+                userImg:Avatar
+            });
+        }
     };
   return (
     <section className="login">

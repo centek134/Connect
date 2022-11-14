@@ -5,3 +5,5 @@ export * from "./WelcomePage";
 export * from "./RoomItem";
 export * from "./Message";
 export * from "./Login";
+export * from "./Files";
+export * from "./FileItem";

@@ -1,0 +1,85 @@
+.files-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: chat_container;
+  background-color: rgba(157, 166, 171, 0.1764705882);
+  overflow: hidden;
+}
+.files-container .files-container__header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #a1a1a1;
+}
+.files-container .files-container__header .header__heading {
+  padding: 0 0 0 20px;
+}
+.files-container .files-container__room-list {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  padding-left: 20px;
+  overflow-x: scroll;
+}
+.files-container .files-container__room-list::-webkit-scrollbar {
+  height: 5px;
+}
+.files-container .files-container__room-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.files-container .files-container__room-list::-webkit-scrollbar-thumb {
+  background-color: rgba(194, 194, 194, 0.6431372549);
+  border-radius: 5px;
+}
+.files-container .files-container__room-list .room-list__paragraph {
+  font-weight: 600;
+}
+.files-container .files-container__room-list .room-list__button {
+  padding: 5px 15px;
+  font-size: 16px;
+  margin: 0 5px;
+  background-color: #fff;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.files-container .files-container__room-list .room-list__button:hover {
+  background-color: #000;
+  color: #fff;
+}
+.files-container .files-container__room-list .room-list__button._button-black {
+  background-color: #000;
+  color: #fff;
+}
+.files-container .files-container__file-list {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+}
+.files-container .files-container__file-list::-webkit-scrollbar {
+  width: 10px;
+  height: 100px;
+}
+.files-container .files-container__file-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.files-container .files-container__file-list::-webkit-scrollbar-thumb {
+  background-color: rgba(194, 194, 194, 0.6431372549);
+  border-radius: 5px;
+}
+@media only screen and (max-width: 600px) {
+  .files-container .files-container__header .header__heading {
+    font-size: 14px;
+  }
+  .files-container .files-container__room-list .room-list__paragraph {
+    font-size: 12px;
+  }
+  .files-container .files-container__room-list .room-list__button {
+    font-size: 12px;
+  }
+}/*# sourceMappingURL=Files.css.map */

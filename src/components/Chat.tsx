@@ -26,7 +26,6 @@ export const Chat = ({user}:Props) => {
     if(img === null) return;
     document.getElementById("file_name")!.innerHTML = `${img.name.slice(0,10)}...`;
     const uploadRef = ref(storage,`files/${roomId}/${img.name}`);
-    console.log( uploadRef,);
     await uploadBytes(uploadRef,img);
     await getDownloadURL(ref(storage,`files/${roomId}/${img.name}`)).then(res =>{ 
       setUploadImgUrl(res);
@@ -104,7 +103,6 @@ export const Chat = ({user}:Props) => {
       await imgUpload(event.target.files![0]);
     }
     else{
-      console.log(event.target.files)
       window.alert("Only images are allowed, please send file with one of the extensions: png, jpg, jpeg, webp, svg");
       resetFileInput();
     };
