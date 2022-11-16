@@ -12,7 +12,7 @@ interface Props{
 export const Chat = ({user}:Props) => {
   useParams();
   let roomId = window.location.pathname.slice(6);
-  const [messages, setMessages] = useState<{ message:string, userName:string, userImage:string, timeStamp:string,imgUrl:string }[]>([]);
+  const [messages, setMessages] = useState<{ message:string, userName:string, userImage:string, timeStamp:string,imgUrl:string, id:string }[]>([]);
   const [messageInput, setMessageInput] = useState<string> ("");
   const [roomName, setRoomName] = useState<string>("");
   const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
@@ -40,7 +40,8 @@ export const Chat = ({user}:Props) => {
         userName:doc.data().userName,
         userImage:doc.data().userImage,
         timeStamp:doc.data().timeStamp,
-        imgUrl:doc.data().imgUrl
+        imgUrl:doc.data().imgUrl,
+        id:doc.id
       })));
     });
     const roomRef = doc(db, `rooms/${roomId}`);
@@ -114,8 +115,8 @@ export const Chat = ({user}:Props) => {
         <h3 className="header__name"># {roomName}</h3>
       </header>
       <section className="chat-container__body">
-        {messages.map((item,i) => {
-          return <Message key={i} imgUrl={item.imgUrl} message={item.message} timeStamp={item.timeStamp} userImage={item.userImage} userName={item.userName}/>
+        {messages.map((item) => {
+          return <Message key={item.id} imgUrl={item.imgUrl} message={item.message} timeStamp={item.timeStamp} userImage={item.userImage} userName={item.userName} messageId={item.id} actualUser={user!.name} roomId={roomId}/>
         })}
       </section>
       <section className="chat-container__panel">
