@@ -1,12 +1,9 @@
 import React,{useState} from "react"
 import DownloadIconSrc from "../assets/icons/FilesItem/Download.png";
+import { FileItemProps } from "../Interfaces";
 import "../assets/styles/FileItem/FileItem.css";
-interface Props {
-    fileName:string,
-    fileUrl:string
-}
 
-export const FileItem = ({ fileName, fileUrl }:Props) => {
+export const FileItem = ({ fileName, fileUrl }:FileItemProps) => {
   
   const [zoomImg, setZoomImg] = useState<boolean>(false);
   return (

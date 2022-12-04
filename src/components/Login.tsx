@@ -1,14 +1,11 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
+import Avatar from "../assets/icons/Header/Avatar.svg";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { LoginProps } from "../Interfaces";
 import "../assets/styles/Login/Login.css";
-import Avatar from "../assets/icons/Header/Avatar.svg"
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import  "firebase/compat/app";
 
-interface Props{
-    setUser: Dispatch<SetStateAction<null | {name:string,userImg:string}>>;
-};
-
-export const Login = ({setUser}:Props) => {
+export const Login = ({setUser}:LoginProps) => {
     
     const signInGoogle = () => {
         const auth = getAuth();
@@ -37,7 +34,7 @@ export const Login = ({setUser}:Props) => {
                 name:name,
                 userImg:Avatar
             });
-        }
+        };
     };
   return (
     <section className="login">
@@ -52,4 +49,3 @@ export const Login = ({setUser}:Props) => {
     </section>
   );
 };
-

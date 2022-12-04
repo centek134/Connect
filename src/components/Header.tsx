@@ -2,11 +2,11 @@ import React from "react";
 //import {ReactComponent as SearchIcon} from "../assets/icons/Header/Search.svg";
 import {ReactComponent as HelpIcon} from "../assets/icons/Header/Help.svg";
 import {ReactComponent as AvatarIcon} from "../assets/icons/Header/Avatar.svg";
+import { HeaderProps } from "../Interfaces";
 import "../assets/styles/Header/Header.css";
 
 
-
-export const Header = (user:{userImg:string, name:string}) => {
+export const Header = ({user}:HeaderProps) => {
   return (
     <header className="header">
       <div className="header__user-wrapp">

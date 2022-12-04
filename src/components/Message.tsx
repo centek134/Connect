@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import TrashIcon from "../assets/icons/Message/Trash.png"
 import { db, deleteDoc, doc } from "../firebase";
+import { MessageProps } from "../Interfaces";
 import "../assets/styles/Message/Message.css";
-interface Props {
-    message: string,
-    timeStamp: any,
-    userImage: string,
-    userName:string,
-    imgUrl?:string,
-    messageId:string,
-    actualUser:string,
-    roomId:string
-}
-export const Message = ({message, timeStamp, userImage, userName, imgUrl, messageId, actualUser, roomId}:Props) => {
+
+export const Message = ({message, timeStamp, userImage, userName, imgUrl, messageId, actualUser, roomId}:MessageProps) => {
 
   const [zoomImg, setZoomImg] = useState<boolean>(false);
   
