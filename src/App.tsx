@@ -4,12 +4,13 @@ import {Chat, Sidebar, Header, WelcomePage, Login, Files} from "./components/ind
 import {Routes, Route } from "react-router-dom";
 const App = () => {
   const [user, setUser] = useState<null | {name:string,userImg:string}>(null);
+  const [activeSidebar, setActiveSidebar] = useState<boolean>(false);
   return (
     <div className="app">
         {user ? (
-        <section className="app_body">
-        <Header user={user}/>
-        <Sidebar/>
+        <section className="app__body">
+        <Header activeSidebar={activeSidebar} setActiveSidebar = {setActiveSidebar} user={user}/>
+        <Sidebar activeSidebar = {activeSidebar} />
         <Routes>
           <Route path="/" element={<WelcomePage/>}/>
           <Route path="/files" element={<Files/>}/>
