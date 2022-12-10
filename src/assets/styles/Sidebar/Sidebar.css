@@ -59,6 +59,16 @@
   }
 }
 @media only screen and (max-width: 600px) {
+  .nav {
+    position: absolute;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    transition: 0.4s;
+  }
+  .nav .nav.--open {
+    left: 100%;
+  }
   .nav .nav__list .list__item .item__text {
     font-size: 8px;
   }
@@ -66,4 +76,8 @@
     width: 10px;
     height: 10px;
   }
+}
+
+.nav.--open {
+  left: 0%;
 }/*# sourceMappingURL=Sidebar.css.map */
