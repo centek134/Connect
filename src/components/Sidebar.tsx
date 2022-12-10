@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { db, collection, addDoc, onSnapshot} from "../firebase";
 import {Link} from "react-router-dom"
+import { SidebarProps } from "../Interfaces";
 import {ReactComponent as ThreadsSVG} from "../assets/icons/Sidebar/Threads.svg";
 import {ReactComponent as FilesSVG} from "../assets/icons/Sidebar/Files.svg";
 import {ReactComponent as DraftsSVG} from "../assets/icons/Sidebar/Drafts.svg";
@@ -11,7 +12,7 @@ import {ReactComponent as PlusSVG} from "../assets/icons/Sidebar/Plus.svg";
 import { RoomItem } from "./index";
 import "../assets/styles/Sidebar/Sidebar.css";
 
-export const Sidebar = () => {
+export const Sidebar = ({activeSidebar}:SidebarProps) => {
   const [rooms, setRooms] = useState<{roomId:string, roomName:string}[]>([]);
 
   useEffect( () => {
@@ -43,7 +44,7 @@ export const Sidebar = () => {
   };
 
   return (
-      <nav className="nav">
+      <nav className={activeSidebar?"nav --open" : "nav"}>
         <ul className="nav__list">
           <li className="list__item"><ThreadsSVG className="item__logo"/><p className="item__text">Threads</p></li>
           <li className="list__item"><MentionsSVG className="item__logo"/><p className="item__text">Mentions & Reactions</p></li>
