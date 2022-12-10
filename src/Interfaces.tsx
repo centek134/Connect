@@ -7,6 +7,8 @@ export interface FileItemProps {
     fileUrl:string
 };
 export interface HeaderProps {
+    activeSidebar:boolean,
+    setActiveSidebar: Dispatch<SetStateAction<boolean>>,
     user:{
       userImg:string,
       name:string
@@ -26,6 +28,9 @@ export interface MessageProps {
     roomId:string
 };
 export interface RoomItemProps  {
-    roomName?: string;
-    roomId?:string;
+    roomName?: string,
+    roomId?:string
+};
+export interface SidebarProps  {
+    activeSidebar:boolean
 };
