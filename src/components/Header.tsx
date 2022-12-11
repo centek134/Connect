@@ -18,7 +18,7 @@ export const Header = ({activeSidebar ,setActiveSidebar ,user}:HeaderProps) => {
           <SearchIcon className="header__input__search-icon"/>
       <HelpIcon className="header__help-icon"/>
       </div> */}
-      <div onClick={() => {setActiveSidebar(!activeSidebar)}} className="header__menu-icon"><div className="header__menu-icon__item"></div></div>
+      <div onClick={() => {setActiveSidebar(!activeSidebar)}} className="header__menu-icon"><div className={activeSidebar? "header__menu-icon__item --open" : "header__menu-icon__item"}></div></div>
     </header>
   );
 };

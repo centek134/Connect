@@ -65,12 +65,33 @@
                 height: 3px;
                 background-color: #fff;
                 border-radius: inherit;
+                transition: 0.3s;
             }
             &::after{
                 top: 10px;
             }
             &::before{
                 top: 20px;
+            }
+        }
+        .header__menu-icon__item.--open{
+                background-color: transparent;
+            &::after, &::before{
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                background-color: #fff;
+                border-radius: inherit;
+                transition: 0.3s;
+            }
+            &::after{
+                top: 10px;
+                transform: rotateZ(45deg);
+            }
+            &::before{
+                top: 10px;
+                transform: rotateZ(-45deg);
             }
         }
     }
