@@ -55,7 +55,12 @@
 }
 @media only screen and (max-width: 600px) {
   .nav .nav__chat-list .nav__chat-list__heading {
-    font-size: 10px;
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .nav .nav__chat-list .nav__chat-list__heading {
+    font-size: 18px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -70,11 +75,20 @@
     left: 100%;
   }
   .nav .nav__list .list__item .item__text {
-    font-size: 8px;
+    font-size: 14px;
   }
   .nav .nav__list .list__item .item__logo {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .nav .nav__list .list__item .item__text {
+    font-size: 12px;
+  }
+  .nav .nav__list .list__item .item__logo {
+    width: 12px;
+    height: 12px;
   }
 }
 

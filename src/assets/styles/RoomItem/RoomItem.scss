@@ -19,7 +19,14 @@
     @media only screen and (max-width:600px) {
         .link__item{
             .link__item__text{
-                font-size: 8px;
+                font-size: 14px;
+            }
+        }
+    }
+    @media only screen and (max-width:450px) {
+        .link__item{
+            .link__item__text{
+                font-size: 12px;
             }
         }
     }
