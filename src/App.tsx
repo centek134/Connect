@@ -9,8 +9,8 @@ const App = () => {
     <div className="app">
         {user ? (
         <section className="app__body">
-        <Header activeSidebar={activeSidebar} setActiveSidebar = {setActiveSidebar} user={user}/>
-        <Sidebar activeSidebar = {activeSidebar} />
+        <Header activeSidebar={activeSidebar} setActiveSidebar = {setActiveSidebar} user={user} />
+        <Sidebar activeSidebar = {activeSidebar} setActiveSidebar = {setActiveSidebar} />
         <Routes>
           <Route path="/" element={<WelcomePage/>}/>
           <Route path="/files" element={<Files/>}/>
