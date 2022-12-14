@@ -29,8 +29,10 @@ export interface MessageProps {
 };
 export interface RoomItemProps  {
     roomName?: string,
-    roomId?:string
+    roomId?:string,
+    setActiveSidebar: Dispatch<SetStateAction<boolean>>
 };
 export interface SidebarProps  {
-    activeSidebar:boolean
+    activeSidebar:boolean,
+    setActiveSidebar: Dispatch<SetStateAction<boolean>>
 };
