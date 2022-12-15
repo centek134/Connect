@@ -5,11 +5,9 @@ import {ReactComponent as AddFileIcon } from "../assets/icons/Chat/AddFileIcon.s
 import { Message } from "./index";
 import { db, collection, doc, addDoc, getDoc, serverTimestamp, onSnapshot, query, orderBy, storage, ref, uploadBytes, getDownloadURL } from "../firebase";
 import {useParams} from "react-router-dom";
-interface Props{
-  user: null | {name:string,userImg:string}
-};
+import { ChatProps } from "../Interfaces";
 
-export const Chat = ({user}:Props) => {
+export const Chat = ({user}:ChatProps) => {
   useParams();
   let roomId = window.location.pathname.slice(6);
   const [messages, setMessages] = useState<{ message:string, userName:string, userImage:string, timeStamp:string,imgUrl:string, id:string }[]>([]);

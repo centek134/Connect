@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { db, collection, addDoc, onSnapshot} from "../firebase";
 import {Link} from "react-router-dom"
-import "../assets/styles/Sidebar/Sidebar.css";
+import { SidebarProps } from "../Interfaces";
 import {ReactComponent as ThreadsSVG} from "../assets/icons/Sidebar/Threads.svg";
 import {ReactComponent as FilesSVG} from "../assets/icons/Sidebar/Files.svg";
 import {ReactComponent as DraftsSVG} from "../assets/icons/Sidebar/Drafts.svg";
@@ -10,8 +10,9 @@ import {ReactComponent as SavedItemsSVG} from "../assets/icons/Sidebar/SavedItem
 import {ReactComponent as AppsSVG} from "../assets/icons/Sidebar/Apps.svg";
 import {ReactComponent as PlusSVG} from "../assets/icons/Sidebar/Plus.svg";
 import { RoomItem } from "./index";
+import "../assets/styles/Sidebar/Sidebar.css";
 
-export const Sidebar = () => {
+export const Sidebar = ({activeSidebar, setActiveSidebar}:SidebarProps) => {
   const [rooms, setRooms] = useState<{roomId:string, roomName:string}[]>([]);
 
   useEffect( () => {
@@ -43,20 +44,20 @@ export const Sidebar = () => {
   };
 
   return (
-      <nav className="nav">
+      <nav className={activeSidebar?"nav --open" : "nav"}>
         <ul className="nav__list">
           <li className="list__item"><ThreadsSVG className="item__logo"/><p className="item__text">Threads</p></li>
           <li className="list__item"><MentionsSVG className="item__logo"/><p className="item__text">Mentions & Reactions</p></li>
           <li className="list__item"><DraftsSVG className="item__logo"/><p className="item__text">Drafts</p></li>
           <li className="list__item"><SavedItemsSVG className="item__logo"/><p className="item__text">Saved Items</p></li>
-          <Link to={"./files"} className="list__item"><FilesSVG className="item__logo"/><p className="item__text">Files</p></Link>
+          <Link onClick={() => {setActiveSidebar(false);}} to={"./files"} className="list__item"><FilesSVG className="item__logo"/><p className="item__text">Files</p></Link>
           <li className="list__item"><AppsSVG className="item__logo"/><p className="item__text">Apps</p></li>
-          <li onClick={addChannel} className="list__item"><PlusSVG className="item__logo"/><p className="item__text">Add channel</p></li>
+          <li onClick={() => {addChannel(); setActiveSidebar(false);}} className="list__item"><PlusSVG className="item__logo"/><p className="item__text">Add channel</p></li>
         </ul>
         <ul className="nav__chat-list">
           <h3 className="nav__chat-list__heading">Channels</h3>
           {rooms.map((item,i) => {
-            return(<RoomItem key={i} roomId={item.roomId} roomName={item.roomName} />)
+            return(<RoomItem setActiveSidebar = {setActiveSidebar} key={i} roomId={item.roomId} roomName={item.roomName} />)
           })}
         </ul>
       </nav>
