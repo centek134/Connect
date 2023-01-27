@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from "react";
 import "../assets/styles/Chat/Chat.css";
 import {ReactComponent as Arrow } from "../assets/icons/Chat/Arrow.svg";
@@ -17,7 +18,6 @@ export const Chat = ({user}:ChatProps) => {
   
   useEffect(() => {
     fetchServerData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[roomId]);
   
   async function imgUpload(img:File){
