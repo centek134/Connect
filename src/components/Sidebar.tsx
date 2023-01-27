@@ -46,12 +46,12 @@ export const Sidebar = ({activeSidebar, setActiveSidebar}:SidebarProps) => {
   return (
       <nav className={activeSidebar?"nav --open" : "nav"}>
         <ul className="nav__list">
-          <li className="list__item"><ThreadsSVG className="item__logo"/><p className="item__text">Threads</p></li>
-          <li className="list__item"><MentionsSVG className="item__logo"/><p className="item__text">Mentions & Reactions</p></li>
-          <li className="list__item"><DraftsSVG className="item__logo"/><p className="item__text">Drafts</p></li>
-          <li className="list__item"><SavedItemsSVG className="item__logo"/><p className="item__text">Saved Items</p></li>
+          <li className="list__item --disabled"><ThreadsSVG className="item__logo"/><p className="item__text">Threads</p></li>
+          <li className="list__item --disabled"><MentionsSVG className="item__logo"/><p className="item__text">Mentions & Reactions</p></li>
+          <li className="list__item --disabled"><DraftsSVG className="item__logo"/><p className="item__text">Drafts</p></li>
+          <li className="list__item --disabled"><SavedItemsSVG className="item__logo"/><p className="item__text">Saved Items</p></li>
           <Link onClick={() => {setActiveSidebar(false);}} to={"./files"} className="list__item"><FilesSVG className="item__logo"/><p className="item__text">Files</p></Link>
-          <li className="list__item"><AppsSVG className="item__logo"/><p className="item__text">Apps</p></li>
+          <li className="list__item --disabled"><AppsSVG className="item__logo"/><p className="item__text">Apps</p></li>
           <li onClick={() => {addChannel(); setActiveSidebar(false);}} className="list__item"><PlusSVG className="item__logo"/><p className="item__text">Add channel</p></li>
         </ul>
         <ul className="nav__chat-list">

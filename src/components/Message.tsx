@@ -7,6 +7,7 @@ import "../assets/styles/Message/Message.css";
 export const Message = ({message, timeStamp, userImage, userName, imgUrl, messageId, actualUser, roomId}:MessageProps) => {
 
   const [zoomImg, setZoomImg] = useState<boolean>(false);
+  const [ visibleTrashIcon, setVisibleTrashIcon ] = useState<boolean>(false); 
   
   async function deleteMessage(messageId:string, userName:string, actualUser:string, roomId:string){
     if(actualUser === userName){
@@ -16,16 +17,15 @@ export const Message = ({message, timeStamp, userImage, userName, imgUrl, messag
       alert("You can delete other users messages!");
     }
   };
-
   return (
-    <div className="message">
+    <div onMouseLeave={() => setVisibleTrashIcon(false)} onMouseOver={() => setVisibleTrashIcon(true)} className="message">
         <img alt="user" className="message__user-image" src={userImage}/>
         <div className="message__content-wrapp">
             <h4 className="content-wrapp__username">{userName} <span className="content-wrapp__username__timestamp">{new Date(timeStamp?.toDate()).toUTCString()}</span></h4>
             <p className="content-wrapp__message-text">{message}</p>
             {imgUrl? <div onClick={() => setZoomImg(!zoomImg)} className={zoomImg? "content-wrapp__img-wrapper img-wrapper_zoom" :"content-wrapp__img-wrapper" }><img className="img-wrapper__img-sent" src={imgUrl} alt="img that was uploaded by user"/></div> : null}
         </div>
-        <button onClick={() => deleteMessage(messageId, userName, actualUser, roomId)} className="message__delete-btn"><img className="message__delete-btn__img" src={TrashIcon} alt="trash icon"/></button>
+        <button  onClick={() => deleteMessage(messageId, userName, actualUser, roomId)} className={visibleTrashIcon? "message__delete-btn" : "message__delete-btn --hidden"}><img className="message__delete-btn__img" src={TrashIcon} alt="trash icon"/></button>
     </div>
   );
 };

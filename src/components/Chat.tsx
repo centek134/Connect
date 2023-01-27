@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from "react";
 import "../assets/styles/Chat/Chat.css";
 import {ReactComponent as Arrow } from "../assets/icons/Chat/Arrow.svg";
@@ -17,7 +18,6 @@ export const Chat = ({user}:ChatProps) => {
   
   useEffect(() => {
     fetchServerData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[roomId]);
   
   async function imgUpload(img:File){
@@ -44,7 +44,8 @@ export const Chat = ({user}:ChatProps) => {
     });
     const roomRef = doc(db, `rooms/${roomId}`);
     const roomSnap = await getDoc(roomRef);
-    setRoomName(roomSnap.data()!.name)
+    setRoomName(roomSnap.data()!.name);
+    scrollView();
   };
   const writeMessage = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessageInput(e.target.value);
@@ -88,6 +89,7 @@ export const Chat = ({user}:ChatProps) => {
     setUploadImgUrl("");
     resetFileInput();
     fetchServerData();
+    scrollView();
   };
 
   const resetFileInput = () => {
@@ -107,12 +109,17 @@ export const Chat = ({user}:ChatProps) => {
     };
   };
 
+  const scrollView = () => {
+    const chatId = document.getElementById("chat-cont__body") as HTMLDivElement;
+    chatId.scroll({top: chatId.scrollHeight, behavior: "smooth"});
+  };
+
   return (
     <main className="chat-container">
       <header className="chat-container__header">
         <h3 className="header__name"># {roomName}</h3>
       </header>
-      <section className="chat-container__body">
+      <section id="chat-cont__body" className="chat-container__body">
         {messages.map((item) => {
           return <Message key={item.id} imgUrl={item.imgUrl} message={item.message} timeStamp={item.timeStamp} userImage={item.userImage} userName={item.userName} messageId={item.id} actualUser={user!.name} roomId={roomId}/>
         })}

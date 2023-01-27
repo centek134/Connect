@@ -2,9 +2,6 @@
   grid-area: sidebar;
   color: rgba(255, 255, 255, 0.8);
   background-color: #4c114d;
-  overflow-y: hidden;
-}
-.nav:hover {
   overflow-y: scroll;
 }
 .nav::-webkit-scrollbar {
@@ -44,6 +41,9 @@
 .nav .nav__list .list__item .item__logo {
   width: 20px;
   height: 20px;
+}
+.nav .nav__list .list__item.--disabled {
+  color: rgba(187, 187, 187, 0.8);
 }
 .nav .nav__chat-list {
   width: 100%;
